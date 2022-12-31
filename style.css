@@ -1,0 +1,193 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 100%;
+  background-color: #333;
+  color: #222;
+  overflow-x: hidden;
+}
+
+.container-main {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fafafa;
+
+  transition: transform 0.5s linear;
+  transform-origin: top left;
+}
+
+/* contenedor de los circulos o botones*/
+.circle-container {
+  position: fixed;
+  top: -10rem;
+  left: -10rem;
+  z-index: 10;
+}
+.circle {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  background-color: #00f2fecc;
+
+  position: relative;
+  transition: transform 0.5s linear;
+}
+.circle button {
+  height: 10rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  font-size: 2.6rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+.circle button.open {
+  left: 60%;
+}
+.circle button.close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+/* contenido del texto y las imagenes */
+.content {
+  max-width: 100rem; /*1000px*/
+  margin: 0 auto;
+  padding: 6rem 9rem;
+}
+
+.content h1 {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.4rem;
+
+  text-shadow: 0.3rem 0.3rem #00f2fecc;
+}
+.content h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-shadow: 0.3rem 0.3rem #00f2fecc;
+}
+
+.content h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  margin: 3rem 0 2rem 0;
+  color: #222;
+}
+
+.content p {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  letter-spacing: 0.1rem;
+  color: #555;
+}
+
+.content img {
+  max-width: 30%;
+  max-height: 30%;
+  margin-left: 4rem;
+  object-fit: cover;
+  display: inline-block;
+}
+[alt='Perro'] {
+  float: left;
+  shape-outside: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  transform: translateX(-2rem);
+}
+[alt='Gato'] {
+  float: right;
+  margin-right: 4rem;
+  shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: translateX(1rem);
+}
+[alt='Conejo'] {
+  float: left;
+  shape-outside: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  object-position: left;
+  transform: translateX(-3rem);
+}
+
+/* Estilos para la navegacion */
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 10;
+}
+nav ul {
+  list-style: none;
+  padding-left: 3rem;
+}
+
+nav ul li {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+  margin: 40px 0;
+  cursor: pointer;
+
+  transition: transform 0.4s ease-in;
+  transform: translateX(-100%);
+}
+nav ul li:hover {
+  color: #00f2fecc;
+}
+
+nav ul li + li {
+  margin-left: 1.5rem;
+  transform: translateX(-150%);
+}
+nav ul li + li + li {
+  margin-left: 3rem;
+  transform: translateX(-200%);
+}
+
+nav ul li i {
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+/* funcionalidad con javascript -----------------------------------------------> */
+
+.container-main.show-nav {
+  transform: rotate(-20deg);
+}
+
+.container-main.show-nav + nav li {
+  transition-delay: 0.3s;
+  transform: translateX(0);
+}
+
+.container-main.show-nav .circle {
+  transform: rotate(-70deg);
+}
